@@ -1,44 +1,113 @@
-﻿void Zadacha47()
+﻿internal class Program
 {
-    //Задача 47. Задайте двумерный массив размером m×n,
-    //заполненный случайными вещественными числами.
-
-    Random random = new Random();
-    int rows = random.Next(4, 8);
-    int columns = random.Next(4, 8);
-    double[,] array = new double[rows, columns];
-    FillArray(array);
-    PrintArray(array);
-}
-
-void FillArray(double[,] array)
-{
-    Random random = new Random();
-    double rows = array.GetLength(0);
-    double columns = array.GetLength(1);
-
-    for (int i = 0; i < rows; i++)
+    private static void Main(string[] args)
     {
-        for (int j = 0; j < columns; j++)
+        void Zadacha47()
         {
-            array[i, j] = random.NextDouble() * 200 - 100;
+            //Задача 47. Задайте двумерный массив размером m×n,
+            //заполненный случайными вещественными числами.
+
+            Random random = new Random();
+            int rows = random.Next(4, 8);
+            int columns = random.Next(4, 8);
+            double[,] array = new double[rows, columns];
+            FillArray(array);
+            PrintArray(array);
+        }
+
+        void Zadacha50()
+        {
+            //Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
+            //и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+        }
+
+        void Zadacha52()
+        {
+            //Задайте двумерный массив из целых чисел.
+            //Найдите среднее арифметическое элементов в каждом столбце.
+
+            Random random = new Random();
+            int rows = random.Next(4, 8);
+            int columns = random.Next(4, 8);
+            int[,] array = new int[rows, columns];
+            FillArray(array, 0, 10);
+            PrintArray(array);
+
+            int sum = 0;
+            for (int j = 0; j < columns; j++)
+            {
+                for (int i = 0; i < rows; i++)
+                {
+                    sum = array[i, j] + array[(i + 1), j];
+                }
+                sum = sum / rows;
+            }
+            Console.WriteLine(sum);
+        }
+
+        //Zadacha47();
+        Zadacha52();
+    }
+
+    static void FillArray(double[,] array)
+    {
+        Random random = new Random();
+        double rows = array.GetLength(0);
+        double columns = array.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                array[i, j] = random.NextDouble() * 200 - 100;
+            }
+        }
+    }
+
+    static void FillArray(int[,] array, int startNum = -10, int finishNum = 10)
+    {
+        Random random = new Random();
+        finishNum++;
+        int rows = array.GetLength(0);
+        int columns = array.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                array[i, j] = random.Next(startNum, finishNum);
+            }
+        }
+    }
+
+    static void PrintArray(double[,] array)
+    {
+        double rows = array.GetLength(0);
+        double columns = array.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                Console.Write(Math.Round(array[i, j], 2) + "\t");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void PrintArray(int[,] array)
+    {
+        int rows = array.GetLength(0);
+        int columns = array.GetLength(1);
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                Console.Write(array[i, j] + "\t");
+            }
+            Console.WriteLine();
         }
     }
 }
-
-void PrintArray(double[,] array)
-{
-    double rows = array.GetLength(0);
-    double columns = array.GetLength(1);
-
-    for (int i = 0; i < rows; i++)
-    {
-        for (int j = 0; j < columns; j++)
-        {
-            Console.Write(Math.Round(array[i, j], 2) + ("\t"));
-        }
-        Console.WriteLine();
-    }
-}
-
-Zadacha47();
