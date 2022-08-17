@@ -20,6 +20,27 @@
             //Напишите программу, которая на вход принимает позиции элемента в двумерном массиве,
             //и возвращает значение этого элемента или же указание, что такого элемента нет.
 
+            Random random = new Random();
+            int rows = random.Next(4, 5);
+            int columns = random.Next(4, 5);
+            int[,] array = new int[rows, columns];
+            FillArray(array, 0, 10);
+            
+            Console.WriteLine("Введите номер столбца");
+            int m = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите номер строки");
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            if (m < rows && n < columns)
+            {
+                Console.WriteLine($"Значение элемента в столбце {m} и строке {n} равно {array[m-1,n-1]}");
+            }
+            else
+            {
+                Console.WriteLine("такого элемента не существует");
+            }
+            Console.WriteLine();
+            PrintArray(array);
         }
 
         void Zadacha52()
@@ -28,8 +49,8 @@
             //Найдите среднее арифметическое элементов в каждом столбце.
 
             Random random = new Random();
-            int rows = random.Next(4, 6);
-            int columns = random.Next(4, 6);
+            int rows = random.Next(4, 8);
+            int columns = random.Next(4, 8);
             int[,] array = new int[rows, columns];
             FillArray(array, 0, 10);
             PrintArray(array);
@@ -37,7 +58,8 @@
         }
 
         //Zadacha47();
-        Zadacha52();
+        //Zadacha52();
+        Zadacha50();
     }
 
     static void FillArray(double[,] array)
