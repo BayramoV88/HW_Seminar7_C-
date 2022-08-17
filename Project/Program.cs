@@ -28,22 +28,12 @@
             //Найдите среднее арифметическое элементов в каждом столбце.
 
             Random random = new Random();
-            int rows = random.Next(4, 8);
-            int columns = random.Next(4, 8);
+            int rows = random.Next(4, 6);
+            int columns = random.Next(4, 6);
             int[,] array = new int[rows, columns];
             FillArray(array, 0, 10);
             PrintArray(array);
-
-            int sum = 0;
-            for (int j = 0; j < columns; j++)
-            {
-                for (int i = 0; i < rows; i++)
-                {
-                    sum = array[i, j] + array[(i + 1), j];
-                }
-                sum = sum / rows;
-            }
-            Console.WriteLine(sum);
+            FindAverage(array);
         }
 
         //Zadacha47();
@@ -108,6 +98,23 @@
                 Console.Write(array[i, j] + "\t");
             }
             Console.WriteLine();
+        }
+    }
+
+    static void FindAverage(int[,] array)
+    {
+        int rows = array.GetLength(0);
+        int columns = array.GetLength(1);
+
+        for (int j = 0; j < columns; j++)
+        {
+            double sum = 0;
+            for (int i = 0; i < rows; i++)
+            {
+                sum = sum + array[i, j];
+            }
+            Math.Round((sum = sum / rows), 2);
+            Console.WriteLine($"cреднее арифметическое элементов {j+1}-го столбца равно {sum}");
         }
     }
 }
